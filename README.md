@@ -2,6 +2,7 @@
 
 - [Next UI](https://nextui.org/docs/guide/introduction)
 - [FontAwesomeIcons](https://fontawesome.com/docs/)
+- [Styled Components](https://styled-components.com/docs)
 
 ## Deploy on Vercel
 

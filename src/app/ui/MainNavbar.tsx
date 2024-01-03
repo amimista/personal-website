@@ -1,3 +1,4 @@
+'use client';
 import {
   Navbar,
   NavbarBrand,
@@ -10,34 +11,29 @@ import {
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { faMoon, faUser } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons/faSun";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 
 export default function MainNavbar() {
   return (
     <div>
-      <Navbar isBordered>
+      <Navbar isBordered className="select-none">
         <NavbarBrand>
-          <p className="font-bold text-inherit">MW</p>
+          <Link href="/" className="text-inherit text-xs">MW</Link>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarContent className="hidden sm:flex gap-4 text-2xs" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#" unselectable="on">
+            <Link color="foreground" className="text-xs" href="../about" >
               About Me
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link href="#" color="foreground">
+            <Link color="foreground" className="text-xs" href="#">
               Projects
             </Link>
           </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Contact Me
-            </Link>
-          </NavbarItem>
         </NavbarContent>
-        <NavbarContent justify="end">
+        <NavbarContent justify="end" className="text-xs">
           <FontAwesomeIcon icon={faUser} />
         </NavbarContent>
       </Navbar>

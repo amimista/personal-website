@@ -10,12 +10,12 @@ import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons";
 export default function Home() {
   return (
     <div className="h-100 flex justify-center py-3">
-      <div className="w-1/2 px-6">
+      <div className="w-1/4">
         <h1 className="text-xl">Marcus Walker</h1>
         <p className="text-sm text-slate-400">
-          I'm a university student while learning web-developement
+          University student majoring in Software Development
         </p>
-        <div className="flex flex-row p-4 gap-3">
+        <div className="flex flex-row p-4 space-x-2">
           <Image
             src={PersonalAvatar}
             alt="Avatar"
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
             <div className="flex flex-row flex-grow gap-3 items-center text-xs text-slate-400">
               <FontAwesomeIcon icon={faClock} />
-              <p>Mountain Daylight Time (UTC/GMT -7 hours)</p>
+              <p>MDT (UTC/GMT -7 hours)</p>
             </div>
           </div>
         </div>
