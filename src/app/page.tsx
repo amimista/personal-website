@@ -7,25 +7,31 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Skeleton,
+  CardHeader,
+  Divider,
+  Radio,
+  RadioGroup,
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {
   faBoltLightning,
+  faEllipsis,
+  faFire,
   faHeart,
-  faMusic,
-  faPlus,
-  faSmileBeam,
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
-    <div className="h-dvh flex flex-col gap-3 justify-center items-center bg-gradient-to-br from-slate-950 via-sky-950 to-indigo-800 ">
-      <div className="flex flex-row justify-center gap-3">
-        <Avatar src={PersonalAvatar.src} size="lg" className="hidden md:inline"/>
+    <main className="h-dvh static flex flex-col gap-3 justify-center items-center bg-gradient-to-br from-slate-950 via-sky-950 to-indigo-800 ">
+      <div className="flex justify-center gap-3">
+        <Avatar
+          src={PersonalAvatar.src}
+          size="lg"
+          className="hidden md:inline"
+        />
         <Card
           isBlurred
           className="w-3/4 md:w-1/2 border-none bg-background/60 dark:bg-default-100/50 hover:text-zinc-50"
@@ -62,21 +68,47 @@ export default function Home() {
                 <FontAwesomeIcon icon={faUpRightFromSquare} />
               </Button>
             </Link>
-            <p className="text-tiny text-white/80 font-mono px-1">{" "}@amimista</p>
+            <p className="text-tiny text-white/80 font-mono px-1"> @amimista</p>
           </CardFooter>
         </Card>
+        <Card
+          isBlurred
+          radius="lg"
+          className="w-3/4 bg-background/60 dark:bg-default-100/50 border-none"
+        >
+          <CardHeader>Where did you come from? 🤔</CardHeader>
+          <Divider />
+          <CardBody>
+            <RadioGroup>
+              <Radio value="referral">Heard of me from somewhere</Radio>
+              <Radio value="resume">Checking my resume</Radio>
+              <Radio value="random">Just browsin{"'"} around</Radio>
+            </RadioGroup>
+          </CardBody>
+        </Card>
       </div>
-      <div className="text-slate-500">
-        <p>
-          Made with the powers of{" "}
-          <Link
-            href="https://nextjs.org"
-            className="hover:text-orange-400 transition-colors"
+      <footer className="absolute bottom-0 flex flex-col justify-center text-slate-500">
+        <FontAwesomeIcon icon={faEllipsis} />
+        <div className="flex align-center gap-2">
+          <a
+            href="https://github.com/amimista/personal-website"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-sky-500 transition-colors"
           >
-            Next.js <FontAwesomeIcon icon={faBoltLightning} />
-          </Link>
-        </p>
-      </div>
-    </div>
+            Repo <FontAwesomeIcon icon={faBoltLightning} />
+          </a>
+          <p>
+            Made with the powers of{" "}
+            <Link
+              href="https://nextjs.org"
+              className="hover:text-orange-500 transition-colors"
+            >
+              Next.js <FontAwesomeIcon icon={faFire} />
+            </Link>
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }

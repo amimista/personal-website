@@ -30,12 +30,15 @@ export default function MainNavbar() {
           <li>
             <Link href="#" className="text-xs text-slate-500 hover:text-inherit transition-colors">Projects</Link>
           </li>
+          <li>
+            <Link href="#" className="text-xs text-slate-500 hover:text-inherit transition-colors">Resume</Link>
+          </li>
         </ul>
         <div className="flex flex-row gap-3 text-xs p-2">
-          <Link href="/" className="text-slate-500 hover:text-inherit transition-colors">
+          <a href="https://github.com/amimista"  target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-inherit transition-colors">
             <FontAwesomeIcon icon={faGithubAlt}/>
-          </Link>
-          <Link href="/" className="text-slate-500 hover:text-inherit transition-colors">
+          </a>
+          <Link href="/../youtube" className="text-slate-500 hover:text-inherit transition-colors">
             <FontAwesomeIcon icon={faYoutube}/>
           </Link>
         </div>
