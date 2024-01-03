@@ -5,7 +5,7 @@ export default function Youtube() {
         ✨ I&apos;m not giving you that ✨
       </p>
       <p className="text-md text-slate-600">
-        There's nothing of real <a className="italic">substance</a> there right
+        There&apos;s nothing of real <a className="italic">substance</a> there right
         now
       </p>
       <p className="text-sm text-slate-600">
