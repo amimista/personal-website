@@ -1,58 +1,81 @@
 import Image from "next/image";
 import { Button } from "@nextui-org/button";
 import PersonalAvatar from "@/../public/avatar.jpg";
-import { Skeleton } from "@nextui-org/react";
+import GithubBanner from "@/../public/gihub-banner.png";
+import {
+  Avatar,
+  Card,
+  CardBody,
+  CardFooter,
+  Skeleton,
+} from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { faGithub, faYoutubeSquare } from "@fortawesome/free-brands-svg-icons";
-import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+  faBoltLightning,
+  faHeart,
+  faMusic,
+  faPlus,
+  faSmileBeam,
+  faUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
-    <div className="h-100 flex justify-center py-3">
-      <div className="w-1/4">
-        <h1 className="text-xl">Marcus Walker</h1>
-        <p className="text-sm text-slate-400">
-          University student majoring in Software Development
-        </p>
-        <div className="flex flex-row p-4 space-x-2">
+    <div className="h-dvh flex flex-col gap-3 justify-center items-center bg-gradient-to-br from-slate-950 via-sky-950 to-indigo-800 ">
+      <div className="flex flex-row justify-center gap-3">
+        <Avatar src={PersonalAvatar.src} size="lg" className="hidden md:inline"/>
+        <Card
+          isBlurred
+          className="w-3/4 md:w-1/2 border-none bg-background/60 dark:bg-default-100/50 hover:text-zinc-50"
+        >
+          <CardBody className="inline-block text-center text-xl">
+            Hello and welcome! I{"'"}m a student at the University of Utah
+            studying Software Development. Go ahead and take a look at my work
+            through the tabs.{" "}
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="hover:text-rose-500 transition-colors"
+            />
+          </CardBody>
+        </Card>
+      </div>
+      <div className="flex gap-3">
+        <Card isFooterBlurred radius="lg" className="border-none">
           <Image
-            src={PersonalAvatar}
-            alt="Avatar"
-            height={100}
-            width={100}
-            className="rounded-full"
+            src={GithubBanner}
+            className="object-cover"
+            height={200}
+            width={200}
+            alt="Github banner"
           />
-          <div className="flex flex-col gap-3 h-3/4 flex-grow ">
-            <div className="flex flex-row flex-grow gap-3 items-center text-2xl">
-              <FontAwesomeIcon icon={faGithub} />
-              <Skeleton className="h-4 w-1/2 rounded-md" />
-            </div>
-            <div className="flex flex-row flex-grow gap-3 items-center text-2xl">
-              <FontAwesomeIcon icon={faYoutubeSquare} />
-              <Skeleton className="h-4 w-1/2 rounded-md" />
-            </div>
-            <div className="flex flex-row flex-grow gap-3 items-center text-xs text-slate-400">
-              <FontAwesomeIcon icon={faClock} />
-              <p>MDT (UTC/GMT -7 hours)</p>
-            </div>
-          </div>
-        </div>
-        <p className="text-xs text-slate-300 text-wrap">
-          I{'\''}m a university student majoring in Software Development. I love
-          photography and learning more about the computer science professional
-          field. I also make youtube videos occasionally. Its gaming for now,
-          but I hope to make more lifestyle and tech-centric videos in the
-          future.
+          <CardFooter className="justify-start before:bg-white/10 border-white/20 border-1 overflow-hidden p-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+            <Link href="https://github.com/amimista">
+              <Button
+                className="text-tiny text-white bg-black/20"
+                variant="flat"
+                color="default"
+                radius="lg"
+                size="sm"
+              >
+                <FontAwesomeIcon icon={faUpRightFromSquare} />
+              </Button>
+            </Link>
+            <p className="text-tiny text-white/80 font-mono px-1">{" "}@amimista</p>
+          </CardFooter>
+        </Card>
+      </div>
+      <div className="text-slate-500">
+        <p>
+          Made with the powers of{" "}
+          <Link
+            href="https://nextjs.org"
+            className="hover:text-orange-400 transition-colors"
+          >
+            Next.js <FontAwesomeIcon icon={faBoltLightning} />
+          </Link>
         </p>
-        <div className="flex gap-3 py-3 text-slate-500 text-xs">
-          <div>
-            <FontAwesomeIcon icon={faPlus} /> Email Me
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faPlus} /> More ways to find me
-          </div>
-        </div>
       </div>
     </div>
   );
