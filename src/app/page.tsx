@@ -39,7 +39,7 @@ export default function Home() {
           </div>
         </div>
         <p className="text-xs text-slate-300 text-wrap">
-          I'm a university student majoring in Software Development. I love
+          I{'\''}m a university student majoring in Software Development. I love
           photography and learning more about the computer science professional
           field. I also make youtube videos occasionally. Its gaming for now,
           but I hope to make more lifestyle and tech-centric videos in the
