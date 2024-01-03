@@ -82,7 +82,7 @@ export default function Home() {
             <RadioGroup>
               <Radio value="referral">Heard of me from somewhere</Radio>
               <Radio value="resume">Checking my resume</Radio>
-              <Radio value="random">Just browsin{"'"} around</Radio>
+              <Radio value="random">Just browsin&apos; around</Radio>
             </RadioGroup>
           </CardBody>
         </Card>

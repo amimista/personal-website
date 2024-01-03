@@ -2,7 +2,7 @@ export default function Youtube() {
   return (
     <main className="h-dvh flex flex-col justify-center items-center">
       <p className="text-2xl opacity-50 hover:opacity-100 transition-opacity">
-        ✨ I{"'"}m not giving you that ✨
+        ✨ I&apos;m not giving you that ✨
       </p>
       <p className="text-md text-slate-600">
         There's nothing of real <a className="italic">substance</a> there right
