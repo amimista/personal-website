@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Button } from "@nextui-org/button";
+import Link from "next/link";
 import PersonalAvatar from "@/../public/avatar.jpg";
 import GithubBanner from "@/../public/gihub-banner.png";
 import {
@@ -13,15 +12,13 @@ import {
   RadioGroup,
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {
   faBoltLightning,
   faEllipsis,
   faFire,
   faHeart,
-  faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import { SocialCard } from "./components/SocialCard";
 
 export default function Home() {
   return (
@@ -48,29 +45,7 @@ export default function Home() {
         </Card>
       </div>
       <div className="flex flex-col sm:flex-row gap-3">
-        <Card isFooterBlurred radius="lg" className="border-none">
-          <Image
-            src={GithubBanner}
-            className="object-cover"
-            height={200}
-            width={200}
-            alt="Github banner"
-          />
-          <CardFooter className="justify-start before:bg-white/10 border-white/20 border-1 overflow-hidden p-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-            <Link href="https://github.com/amimista">
-              <Button
-                className="text-tiny text-white bg-black/20"
-                variant="flat"
-                color="default"
-                radius="lg"
-                size="sm"
-              >
-                <FontAwesomeIcon icon={faUpRightFromSquare} />
-              </Button>
-            </Link>
-            <p className="text-tiny text-white/80 font-mono px-1"> @amimista</p>
-          </CardFooter>
-        </Card>
+        <SocialCard banner={GithubBanner} href='#' handle='@amimista'/>
         <Card
           isBlurred
           radius="lg"
