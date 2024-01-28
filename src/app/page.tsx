@@ -37,7 +37,7 @@ export default function Home() {
           className="w-3/4 md:w-1/2 border-none bg-background/60 dark:bg-default-100/50 hover:text-zinc-50"
         >
           <CardBody className="inline-block text-center text-xl">
-            Hello and welcome! I{"'"}m a student at the University of Utah
+            Hello and welcome! I&apos;m a student at the University of Utah
             studying Software Development. Go ahead and take a look at my work
             through the tabs.{" "}
             <FontAwesomeIcon
@@ -47,7 +47,7 @@ export default function Home() {
           </CardBody>
         </Card>
       </div>
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <Card isFooterBlurred radius="lg" className="border-none">
           <Image
             src={GithubBanner}
@@ -87,7 +87,7 @@ export default function Home() {
           </CardBody>
         </Card>
       </div>
-      <footer className="absolute bottom-0 flex flex-col justify-center text-slate-500">
+      <footer className="static sm:absolute bottom-0 flex flex-col justify-center text-slate-500">
         <FontAwesomeIcon icon={faEllipsis} />
         <div className="flex align-center gap-2">
           <a

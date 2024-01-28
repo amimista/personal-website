@@ -5,7 +5,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 import "./globals.css";
-import MainNavbar from "@/app/ui/MainNavbar";
+import UserNavbar from "@/app/ui/UserNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.className} bg-slate-950 h-screen`}>
         <Providers>
-          <MainNavbar />
+          <UserNavbar />
           {children}
         </Providers>
       </body>
