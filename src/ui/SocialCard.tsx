@@ -1,3 +1,4 @@
+'use client';
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { Card, CardFooter, Button } from "@nextui-org/react";

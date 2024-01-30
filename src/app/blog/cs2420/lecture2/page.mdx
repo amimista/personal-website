@@ -1,0 +1,117 @@
+# Lecture 2: Parameter Passing
+
+Course: Data Structures and Algorithms <br />
+Last Edited: January 23, 2024 1:25 PM
+
+### Warmup
+
+```java
+public static void main(String[] args) {
+    int[] arr = new int[] {1, 2};
+    addOne(arr);
+    System.out.println(Arrays.toString(arr));
+}
+
+public static void addOne(int[] x) {
+    x[0]++;
+}
+```
+
+What do you think it would print out considering that the original structure of the array `arr` is `[1, 2]`?
+
+- 🧑‍💻 Output:
+    
+    ```bash
+    [2, 2]
+    ```
+    
+    - It's like this because the array is taking up one place in the memory heap. The integers inside can be changed
+
+---
+
+### Parameter and Memory References
+
+If the given code snippet is run, what will it output?
+
+Don't worry about the `java.awt.Point` before each element, which is also omitted in the output.
+
+```java
+Point p = new Point(5, 10);
+Point[] points = new Point[5];
+    for (int i = 0; i < points.length; i++) {
+    points[i] = p;
+}
+System.out.println(Arrays.toString(points));
+p.x++;
+System.out.println(Arrays.toString(points));
+```
+
+- 🧑‍💻 Output:
+    
+    ```bash
+    [[x=5,y=10], [x=5,y=10], [x=5,y=10], [x=5,y=10], [x=5,y=10]]
+    [[x=6,y=10], [x=6,y=10], [x=6,y=10], [x=6,y=10], [x=6,y=10]]
+    ```
+    
+    - Why is that? It's because each of the indices in the array are referencing the same object. You change the object itself, **everything** changes.
+    
+
+A better way of implementing this would be to use a copy constructor. This essentially just makes a new object with the same values passed in the constructor.
+
+```java
+points = new Point[5];
+for (int i = 0; i < points.length; i++) {
+    points[i] = new Point(p);
+}
+```
+
+### Generic Methods
+
+Okay, so what if you made a method that looks like this? 
+
+This reverses the ordering of an array. It'll do this by only going half way and swapping the **nth** element and the **(arr.length - 1 - nth)**. Keep in mind that this also edits the passed in the array *directly*, and doesn't make a copy to save or return.
+
+- This allows us to do a little less work than making a new array and iterating through it backwards.
+
+```java
+public static void reverse(int[] arr) {
+    for (int i = 0; i < arr.length / 2; i++) {
+        int tmp = arr[i];
+        arr[i] = arr[(arr.length-1) - i];
+        arr[(arr.length-1) - i] = tmp;
+    }
+}
+```
+
+Okay, yeah. Cool. Now what if we wanted to reuse that code for an array of `float`s instead? What would you do?
+
+You wouldn't copy-and-pase, you would make what's called a **generic** method. It goes a little like this:
+
+```java
+public static <T> void reverse(T[] arr) {
+    for (int i = 0; i < arr.length / 2; i++) {
+        T tmp = arr[i];
+        arr[i] = arr[(arr.length-1) - i];
+        arr[(arr.length-1) - i] = tmp;
+    }
+}
+```
+
+You'll first notice the `<T>` in the method signature right before the return type of the method. This indicates that it's a generic method and it will be able to use any type passed into it.
+
+So now you should be able to do this:
+
+```java
+Integer[] integerArr = new Integer[] {1, 2, 3};
+Float[] floatArr = new Float[] {1.5, 2.6, 3.1};
+
+System.out.println(Arrays.toString(reverse(integerArr)));
+System.out.println(Arrays.toString(reverse(floatArr)));
+```
+
+- 🧑‍💻 Output:
+    
+    ```bash
+    [3, 2, 1]
+    [3.1, 2.6, 1.5]
+    ```
