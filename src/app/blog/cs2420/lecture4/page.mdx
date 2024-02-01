@@ -1,0 +1,56 @@
+# Lecture 4: Inheritance 2
+
+Course: Data Structures and Algorithms
+Last Edited: January 23, 2024 1:25 PM
+
+# Lecture 04 January 18, 2024
+
+## 🤔 Warmup
+
+```java
+GrowableArray<Student> students = ...;
+GrowableArray<TA> tas = ...;
+// public void addAll(GrowableArray<T> other { ... }
+students.add(tas);
+```
+
+- Does this make sense to do?
+    - No. `students.add(tas)` will come out with a compile error since it can’t pass in another `GrowableArray`
+- How do we fix it to work as we expect?
+    - Change the `students.add(tas)` to `students.addAll(tas)`
+    - We also need to change the signature of `addAll` to…
+        
+        ```java
+        public void addAll(GrowableArray<? extends T> other)
+        ```
+        
+- Consider this:
+
+```java
+// sort (Comparaotr<T> cmp)
+tas.sort(new StudentComparator())
+```
+
+- Should it work? What do you think will happen?
+    - Dunno. Can’t see the actual contents of the comparator. But the syntax looks fine.
+
+## Abstract Data Types
+
+- An ADT is basically a language-agnostic term for an interface
+- We specify the operations we need to perform on our data and what they’re supposed to return. —  **we don’t implement any of the actual methods or operations**
+- The classes that uses these ADTs are considered **data structures.** These are in a separate class/ file from the ADT declaration.
+- Examples
+    - `Collection<T>`
+    - `Iterable<T>`
+        - Directly related to the for each methods while **iterating** through an ArrayList.
+    - `Set<T>`
+        - `boolean add(T t)` **returns** true if t wasn’t in the set already.
+        - `boolean contains(T t)`
+        - `boolean remove(T t)` **returns** true if t was there and we removed it
+        - `Iterator<T>`
+    - `Map<K,V>`
+        - Key value pair
+        - `V get(K k)` get value associated with k
+        - `void set (K k, V v)`
+        - `boolean remove(K k)`
+        - Not really a way to get a value in maps (because it uses hash codes to index it’s values. 👹

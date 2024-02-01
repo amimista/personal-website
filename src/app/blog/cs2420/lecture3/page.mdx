@@ -1,0 +1,135 @@
+# Lecture 3: Inheritance
+
+Course: Data Structures and Algorithms
+Last Edited: January 23, 2024 1:25 PM
+
+## 🤔 Warmup
+
+```java
+class Base { public void baseMethod() {} }
+class Derived extends Base {
+  @Override public void baseMethod() {}
+  public void derivedMethod() {}
+}
+```
+
+What Happens in these cases (which method versions are called)?
+
+- Derived x1 = new Derived(); x1.baseMethod();
+    
+    Derived `@Override baseMethod` method
+    
+- Base x2 = new Derived(); x1.baseMethod();
+    
+    Derived `@Override baseMethod` method
+    
+- Base x3 = new Derived(); x1.derivedMethod();
+    
+    **Exception**; No method found since the type of the object is `Base`. It shows the methods/ fields that are exposed, though if you would call `baseMethod()` it'll look at the derived `baseMethod()`. **[See question 2](https://www.notion.so/Lecture-3-Inheritance-8ddeeca0f4674c0b9e4e79dbfe3f8855?pvs=21).**
+    
+- Derived x4 = new Base(); x4.derivedMethod();
+    
+    **Compile Error**; Doesn't make sense. Can't assign more specific type to a more general class.
+    
+
+---
+
+## Generic Types
+
+### Recap Reverse Method
+
+```java
+public static void reverse(int[] arr) {
+    for (int i = 0; i < arr.length / 2; i++) {
+        int tmp = arr[i];
+        arr[i] = arr[(arr.length-1) - i];
+        arr[(arr.length-1) - i] = tmp;
+    }
+}
+```
+
+What would I have to change to make [this](https://www.notion.so/Lecture-2-Parameter-Passing-c0c3e37a83a0495bb03822d6a1f225f3?pvs=21) work with `doubles`/`Points`/`Students` ?
+
+### Generic Reverse Method
+
+```java
+public static <T> void reverse(T[] arr) {
+    for (int i = 0; i < arr.length / 2; i++) {
+        T tmp = arr[i];
+        arr[i] = arr[(arr.length-1) - i];
+        arr[(arr.length-1) - i] = tmp;
+    }
+}
+```
+
+- `T` is a "Generic Type" or "Type Parameter"
+- It is a "Placeholder" type that is filled in when we call the method and pass an array
+- `T` Can be filled be any object type
+
+### Generic Classes
+
+```java
+public class myClass<T> {
+  public add(T item) { ... }
+  public T get(int index) { return ... }
+}
+```
+
+- T is a placeholder type which can be any Object type.
+- Making a new object of said `myClass` would go a little something like this:
+
+```java
+myClass<String> myClassObject = new myClass<>();
+```
+
+<aside>
+💡 Similar look to an `ArrayList` declaration.
+
+</aside>
+
+### Comparisons with just using Object
+
+- Java Generics work basically like using `Object`, except that the compiler will do some extra checking and automatic casting for us.
+- If we just stored an `Object` then the user (or other developer) would have to cast the output to something that they can use more effectively. *Super tedious and unnecessary.*
+
+### `Comparable<T>`
+
+- Here's an interface that we'll use a LOT in 2420:
+
+```java
+public interface Comparable<T> {
+  int compareTo(T otherObject) { ... }
+}
+```
+
+- Returns a negative number if the attached object is smaller than `otherObject`.
+- Returns a positive number if the attached object is bigger than `otherObject`.
+- Returns a 0 if both objects are equal to each other.
+- You only get one `compareTo()` per implementation for a class. **Make it a good one.** Use unique values to do the comparisons.
+    - i.e. Student IDs
+
+### `Comparator<T>`
+
+```java
+public interface Comparator<T> {
+  int compare(T o1, T o2) { ... }
+}
+// in a whole new class, but could a sub-class too.
+public class FirstNameComparator implements Comparator<Name> {
+  public int compare(Name n1, Name n2) {
+    return n1.getFirst().compareTo(n2.getFirst());
+  }
+}
+// somewhere else (probably in a main method)
+ArrayList<Name> names = ...;
+Collections.sort(names, new FirstNameComparator());
+```
+
+***OR***
+
+```java
+Collections.sort(names, (Name o1, Name o2) -> o1.compareTo(o2)); // lambda
+```
+
+- You'd use a *lambda* for simple comparisons. `[Collections.sort()](https://www.geeksforgeeks.org/collections-sort-java-examples/)` passes in a comparator to customize how you'd like to sort the collection.
+    - Collections are [Lists](https://docs.oracle.com/javase/8/docs/api/java/util/List.html), [Maps](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html), and [Sets](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html). All of which will be covered in later lectures.

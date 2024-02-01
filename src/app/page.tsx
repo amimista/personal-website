@@ -5,7 +5,6 @@ import {
   Avatar,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Divider,
   Radio,
@@ -18,7 +17,7 @@ import {
   faFire,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { SocialCard } from "./components/SocialCard";
+import { SocialCard } from "@/ui/SocialCard";
 
 export default function Home() {
   return (

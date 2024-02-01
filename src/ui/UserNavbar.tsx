@@ -1,9 +1,7 @@
 'use client';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import Image from "next/image";
 import { faGithubAlt, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import LogoImage from "@/../public/logo.svg";
 
 // creates a component that passes in props and also class name modifiers
 const Logo = (props:any) => ( 
@@ -21,7 +19,7 @@ const Logo = (props:any) => (
 
 export default function UserNavbar() {
   return (
-      <nav className="mx-auto py-1 md:px-6 lg max-w-[700px] flex justify-between items-center gap-3 select-none">
+      <nav className={"mx-auto py-1 md:px-6 lg max-w-[700px] flex justify-between items-center gap-3 select-none bg-slate-950"}>
         <div>
           <Link href="/" className="text-md px-2">
             <Logo width={30} height={30} className="fill-slate-50"/>
@@ -36,6 +34,9 @@ export default function UserNavbar() {
           </li>
           <li>
             <Link href="#" className="text-md text-slate-500 hover:text-inherit transition-colors">Resume</Link>
+          </li>
+          <li>
+            <Link href="/../blog" className="text-md text-slate-500 hover:text-inherit transition-colors">Blog</Link>
           </li>
         </ul>
         <div className="flex flex-row gap-3 text-md px-2">
